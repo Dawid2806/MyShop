@@ -1,32 +1,14 @@
 import React from "react";
+import { dummyProps, itemsProps } from "../../typs";
 
-export const CollectionTitle = (props: {
-  category:
-    | string
-    | number
-    | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-    | React.ReactFragment
-    | React.ReactPortal
-    | null
-    | undefined;
-  CategoryDescription:
-    | string
-    | number
-    | boolean
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-    | React.ReactFragment
-    | React.ReactPortal
-    | null
-    | undefined;
-}) => {
+export const CollectionTitle: React.FC<dummyProps> = (props) => {
   return (
     <div className="flex items-center rounded bg-gray-100 p-8">
       <div className="mx-auto text-center lg:text-left">
-        <h2 className="text-2xl font-bold">{props.category}</h2>
+        <h2 className="text-2xl font-bold">{props.category?.toUpperCase()}</h2>
 
         <p className="mt-4 max-w-[45ch] text-sm text-gray-700">
-          {props.CategoryDescription}
+          {props.categoryDescription}
         </p>
 
         <a
