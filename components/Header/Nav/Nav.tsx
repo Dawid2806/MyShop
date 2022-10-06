@@ -7,17 +7,15 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Profil } from "../Profil/Profil";
+import { DropBox } from "../dropsbox/Dropbox";
 
-const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "About", href: "/about", current: false },
-  { name: "Products", href: "/products", current: false },
-  { name: "Coś", href: "/cos", current: false },
-];
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 export const Nav = () => {
+  const styleMenuWithMobileNav =
+    " text-gray-300    px-3 py-2 rounded-md text-base font-medium";
+
+  const styleMenuDesktop =
+    "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -45,21 +43,13 @@ export const Nav = () => {
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  {navigation.map((item) => (
-                    <Link key={item.name} href={item.href}>
-                      <a
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    </Link>
-                  ))}
+                  <Link href={"/"}>
+                    <a className={styleMenuDesktop}>Home</a>
+                  </Link>
+                  <Link href={"/about"}>
+                    <a className={styleMenuDesktop}>About</a>
+                  </Link>
+                  <DropBox />
                 </div>
               </div>
             </div>
@@ -69,11 +59,27 @@ export const Nav = () => {
                 className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 <span className="sr-only">Cart</span>
-                <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                <ShoppingCartIcon
+                  className="h-6 w-6 mr-10"
+                  aria-hidden="true"
+                />
               </button>
             </div>
             <Profil />
           </div>
+          <Disclosure.Panel className="sm:hidden">
+            <div className="flex flex-col space-y-1 px-2 pt-2 pb-3">
+              <Disclosure.Button as="a" className={styleMenuWithMobileNav}>
+                Home
+              </Disclosure.Button>
+              <Disclosure.Button as="a" className={styleMenuWithMobileNav}>
+                About
+              </Disclosure.Button>
+              <Disclosure.Button as="a" className={styleMenuWithMobileNav}>
+                <DropBox />
+              </Disclosure.Button>
+            </div>
+          </Disclosure.Panel>
         </div>
       )}
     </Disclosure>

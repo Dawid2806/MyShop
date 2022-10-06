@@ -1,23 +1,21 @@
+import { Banner } from "../components/Banners/BannerBig";
 import { Collection } from "../components/Collection/Collection";
 import { dummyProducts } from "../dummyData";
 
 const Home = () => {
-  console.log(dummyProducts);
-
   return (
     <>
-      {dummyProducts.map(
-        (section: { category: any; CategoryDescription: any; items: any }) => {
-          return (
-            <Collection
-              key={section.category}
-              sectionTitle={section.category}
-              sectionDescription={section.CategoryDescription}
-              sectionItems={section.items}
-            />
-          );
-        }
-      )}
+      <Banner />
+      {dummyProducts.map((section) => {
+        return (
+          <Collection
+            key={section.category}
+            category={section.category}
+            categoryDescription={section.categoryDescription}
+            items={section.items}
+          />
+        );
+      })}
     </>
   );
 };

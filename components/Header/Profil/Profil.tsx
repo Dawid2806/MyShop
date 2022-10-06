@@ -1,12 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  ShoppingCartIcon,
-  XMarkIcon,
-  UserIcon,
-} from "@heroicons/react/24/outline";
+import { Menu, Transition } from "@headlessui/react";
+import { UserIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 function classNames(...classes: string[]) {
