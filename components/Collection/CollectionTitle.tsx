@@ -1,7 +1,6 @@
 import React from "react";
-import { dummyProps, itemsProps } from "../../typs";
 
-export const CollectionTitle: React.FC<dummyProps> = (props) => {
+export const CollectionTitle = (props: any) => {
   return (
     <div className="flex items-center rounded bg-gray-100 p-8">
       <div className="mx-auto text-center lg:text-left">

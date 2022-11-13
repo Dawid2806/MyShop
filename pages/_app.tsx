@@ -1,14 +1,19 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Header } from "../components/Header/Header";
-import { Footer } from "../components/Footer/Footer";
+import { DefaultSeo } from "next-seo";
+import SEO from "./../next-seo.config";
+import { ApolloProvider } from "@apollo/client";
+
+import { Layout } from "../components/Layout/Layout";
+import { apolloClient } from "../graphql/apolloClient";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-    </>
+    <ApolloProvider client={apolloClient}>
+      <Layout>
+        <DefaultSeo {...SEO} />
+        <Component {...pageProps} />
+      </Layout>
+    </ApolloProvider>
   );
 }
 

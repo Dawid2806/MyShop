@@ -8,9 +8,9 @@ export const DropBox = () => {
     "text-gray-300 hover:text-gray-600 block px-4 py-2 text-sm";
 
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu as="div" className="relative flex items-center text-left">
       <div>
-        <Menu.Button className="inline-flex rounded-md text-gray-300 hover:bg-gray-700 hover:text-white   bg-gray-800  py-2  font-bold text-medium shadow-sm ">
+        <Menu.Button className="flex justify-center items-center  text-gray-300 hover:bg-gray-700 hover:text-white   bg-gray-800     ">
           Products
           <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
         </Menu.Button>
@@ -25,7 +25,7 @@ export const DropBox = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute left-14 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute left-14 top-6 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
               <Link href="#">

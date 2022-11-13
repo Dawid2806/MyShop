@@ -1,18 +1,26 @@
 import { Banner } from "../components/Banners/BannerBig";
 import { Collection } from "../components/Collection/Collection";
-import { dummyProducts } from "../dummyData";
 
-const Home = () => {
+import { GetCategoryDocument, GetCategoryQuery } from "../src/gql/graphql";
+import { apolloClient } from "../graphql/apolloClient";
+import { InferGetStaticPropsType } from "next";
+
+const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log(data.categories);
   return (
     <>
       <Banner />
-      {dummyProducts.map((section) => {
+      {data.categories.map((el) => {
         return (
           <Collection
-            key={section.category}
-            category={section.category}
-            categoryDescription={section.categoryDescription}
-            items={section.items}
+            key={el.__typename}
+            data={el.products.map((item) => {
+              return {
+                category: item.name,
+                categoryDescription: item.name,
+                items: item.products,
+              };
+            })}
           />
         );
       })}
@@ -21,3 +29,14 @@ const Home = () => {
 };
 
 export default Home;
+
+export const getStaticProps = async () => {
+  const { data } = await apolloClient.query<GetCategoryQuery>({
+    query: GetCategoryDocument,
+  });
+  return {
+    props: {
+      data,
+    },
+  };
+};
