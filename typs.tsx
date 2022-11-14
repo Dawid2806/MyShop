@@ -5,12 +5,12 @@ export interface dummyProps {
 }
 
 export interface itemsProps {
-  key: string;
-  id: string;
+  map(
+    arg0: (item: any, index: any) => JSX.Element | undefined
+  ): import("react").ReactNode;
   title: string;
-  description?: string;
-  price?: string;
-  image?: Image[] | string;
+  image: Image[];
+  price: number;
 }
 export interface Image {
   url: string;

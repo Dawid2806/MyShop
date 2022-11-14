@@ -1,7 +1,11 @@
 query GetCategory {
   categories {
+    name
+    id
+    description
     products {
       name
+      id
       price
       image {
         url

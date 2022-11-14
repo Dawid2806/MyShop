@@ -1,6 +1,9 @@
 import React from "react";
-
-export const CollectionTitle = (props: any) => {
+interface ProductsCollectionsListProps {
+  category: string;
+  categoryDescription: string;
+}
+export const CollectionTitle = (props: ProductsCollectionsListProps) => {
   return (
     <div className="flex items-center rounded bg-gray-100 p-8">
       <div className="mx-auto text-center lg:text-left">

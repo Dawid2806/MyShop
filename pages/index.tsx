@@ -6,21 +6,16 @@ import { apolloClient } from "../graphql/apolloClient";
 import { InferGetStaticPropsType } from "next";
 
 const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(data.categories);
   return (
     <>
       <Banner />
-      {data.categories.map((el) => {
+      {data.categories.map((collection) => {
         return (
           <Collection
-            key={el.__typename}
-            data={el.products.map((item) => {
-              return {
-                category: item.name,
-                categoryDescription: item.name,
-                items: item.products,
-              };
-            })}
+            key={collection.id}
+            category={collection.name as string}
+            categoryDescription={collection.description as string}
+            items={[collection.products]}
           />
         );
       })}

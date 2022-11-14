@@ -1,33 +1,34 @@
-import { imageConfigDefault } from "next/dist/shared/lib/image-config";
 import Link from "next/link";
 import { itemsProps } from "../../typs";
 
-interface collectionItemProps {
-  items: itemsProps[] | undefined;
+export interface collectionItemProps {
+  items: itemsProps[];
 }
 
 export const CollectionItem = (props: collectionItemProps) => {
-  const url = props.items?.map((item) => {
-    return item.image;
+  if (!props.items) {
+    return null;
+  }
+  const item = props.items.map((item) => {
+    return item;
   });
-
   return (
     <div className="grid grid-cols-2 gap-4 lg:col-span-2 lg:grid-cols-3 lg:py-12">
-      {props.items?.map((item, index) => {
+      {item[0].map((item, index) => {
         if (index < 3) {
           return (
-            <Link key={item.key} href={"#"}>
+            <Link key={item.id} href={"#"}>
               <a className="block">
                 <picture>
                   <img
                     alt={item.title}
-                    src={item.image}
+                    src={item.image.url}
                     className="aspect-square w-full rounded object-cover"
                   />
                 </picture>
 
                 <div className="mt-2">
-                  <h5 className="font-medium">{item.title}</h5>
+                  <h5 className="font-medium">{item.name}</h5>
 
                   <p className="mt-1 text-sm text-gray-700">${item.price}</p>
                 </div>
