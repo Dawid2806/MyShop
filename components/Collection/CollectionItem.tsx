@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { itemsProps } from "../../typs";
-import {Item} from "./Collection";
+import { Item } from "./Collection";
 
 export interface collectionItemProps {
   items: Item[];
@@ -22,8 +22,8 @@ export const CollectionItem = (props: collectionItemProps) => {
               <a className="block">
                 <picture>
                   <img
-                    alt={item?.name || "Placeholder"}
-                    src={item?.image?.url}
+                    alt={item.name}
+                    src={item.image?.url}
                     className="aspect-square w-full rounded object-cover"
                   />
                 </picture>
