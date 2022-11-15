@@ -13,9 +13,9 @@ const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
         return (
           <Collection
             key={collection.id}
-            category={collection.name as string}
-            categoryDescription={collection.description as string}
-            items={[collection.products]}
+            category={collection.name}
+            categoryDescription={collection.description}
+            items={collection.products}
           />
         );
       })}
@@ -35,3 +35,4 @@ export const getStaticProps = async () => {
     },
   };
 };
+
