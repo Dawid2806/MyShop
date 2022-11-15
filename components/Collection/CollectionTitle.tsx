@@ -1,7 +1,7 @@
 import React from "react";
 interface ProductsCollectionsListProps {
-  category: string;
-  categoryDescription: string;
+  category: string | null | undefined;
+  categoryDescription: string  | null | undefined;
 }
 export const CollectionTitle = (props: ProductsCollectionsListProps) => {
   return (

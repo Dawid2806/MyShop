@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { itemsProps } from "../../typs";
+import {Item} from "./Collection";
 
 export interface collectionItemProps {
-  items: itemsProps[];
+  items: Item[];
 }
 
 export const CollectionItem = (props: collectionItemProps) => {
@@ -14,15 +15,15 @@ export const CollectionItem = (props: collectionItemProps) => {
   });
   return (
     <div className="grid grid-cols-2 gap-4 lg:col-span-2 lg:grid-cols-3 lg:py-12">
-      {item[0].map((item, index) => {
+      {item.map((item, index) => {
         if (index < 3) {
           return (
             <Link key={item.id} href={"#"}>
               <a className="block">
                 <picture>
                   <img
-                    alt={item.title}
-                    src={item.image.url}
+                    alt={item?.name || "Placeholder"}
+                    src={item?.image?.url}
                     className="aspect-square w-full rounded object-cover"
                   />
                 </picture>

@@ -4,10 +4,12 @@ import { CollectionItem, collectionItemProps } from "./CollectionItem";
 import { CollectionTitle } from "./CollectionTitle";
 
 interface ProductsCollectionsListProps {
-  category: string;
-  categoryDescription: string;
-  items: any[];
+  category: string | null | undefined;
+  categoryDescription: string | null | undefined;
+  items: Item[];
 }
+
+export type Item = {__typename?: 'Product', name?: string | null, id: string, price?: number | null, image?: { __typename?: 'Asset', url: string } | null }
 
 export const Collection = (props: ProductsCollectionsListProps) => {
   return (
@@ -16,7 +18,7 @@ export const Collection = (props: ProductsCollectionsListProps) => {
         <h3 className="mb-8 text-center text-bold text-2xl a">
           Check out our collection
           <span className="ml-4 text-violet-400">
-            {props.category.toUpperCase()}
+            {props.category?.toUpperCase()}
           </span>
         </h3>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
