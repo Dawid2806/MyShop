@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CollectionItem, collectionItemProps } from "./CollectionItem";
+import { CollectionItem } from "./CollectionItem";
 import { CollectionTitle } from "./CollectionTitle";
 
 interface ProductsCollectionsListProps {

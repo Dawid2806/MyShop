@@ -28,27 +28,38 @@ export const DropBox = () => {
         <Menu.Items className="absolute left-14 top-6 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
-              <Link href="#">
+              <span>
+
+              <Link  href="/watch" passHref >
                 <a className={categoryStyle}>WATCH</a>
               </Link>
+              </span>
             </Menu.Item>
             <Menu.Item>
-              <Link href="#">
+              <span>
+
+              <Link href="/shoes" passHref >
                 <a className={categoryStyle}>SHOES</a>
               </Link>
+              </span>
             </Menu.Item>
             <Menu.Item>
-              <Link href="#">
+              <span>
+
+              <Link href="/t-shirts" passHref>
                 <a className={categoryStyle}>T-SHIRTSES</a>
               </Link>
+              </span>
             </Menu.Item>
-            <form method="POST" action="#">
-              <Menu.Item>
-                <Link href="#">
+            <Menu.Item>
+              <span>
+                
+                <Link href="/sweatshirts" passHref>
                   <a className={categoryStyle}>SWEATSHIRTS</a>
                 </Link>
+              </span>
               </Menu.Item>
-            </form>
+          
           </div>
         </Menu.Items>
       </Transition>

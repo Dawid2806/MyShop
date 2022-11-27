@@ -22,7 +22,7 @@ export const CollectionItem = (props: collectionItemProps) => {
               <a className="block">
                 <picture>
                   <img
-                    alt={item.name}
+                    alt={`${item.name}`}
                     src={item.image?.url}
                     className="aspect-square w-full rounded object-cover"
                   />
