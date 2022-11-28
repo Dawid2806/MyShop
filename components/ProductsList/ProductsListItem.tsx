@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import React from 'react'
+import { useCartState } from '../../hooks/useContext'
 
 
 interface ProductsListItemProps {
-    id:string | undefined
+    id:string 
     imageSrc:string | undefined | null
     imageAlt:string | undefined | null
-    name:string | undefined | null
-    price:number | undefined | null
+    name:string | undefined
+    price:number | undefined
 }
 
 export const ProductsListItem = ({
@@ -17,6 +18,18 @@ export const ProductsListItem = ({
     name,
     price,
 }:ProductsListItemProps) => {
+
+  const cartState = useCartState()
+
+    const addToCartHandler = ()=>{
+      cartState.addItemToCart({
+        id: String(id),
+        price: Number(price),
+        title: String(name),
+        count :1
+      })
+    }
+
     return (
         <div key={id} className="group relative">
         <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
@@ -40,7 +53,12 @@ export const ProductsListItem = ({
         </div>
         <div className='flex my-4'>
 
-        <button className="m-auto  bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-xl">Add to Cart</button>
+        <button onClick={()=>{ cartState.addItemToCart({
+        id: String(id),
+        price: Number(price),
+        title: String(name),
+        count :1
+      })}} className="m-auto  bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-xl">Add to Cart</button>
         </div>
       </div>
     )

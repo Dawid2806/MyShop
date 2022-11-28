@@ -1,13 +1,12 @@
 import React from 'react'
-import { collectionItemProps } from '../Collection/CollectionItem'
 import { ProductsListItem } from './ProductsListItem';
 
 interface ProductsListProps{
     items: {
         __typename?: "Product" | undefined;
         id: string;
-        name?: string | null | undefined;
-        price?: number | null | undefined;
+        name?: string 
+        price?: number 
         image?: {
             __typename?: "Asset" | undefined;
             url: string;
@@ -17,6 +16,7 @@ interface ProductsListProps{
 
 
 export const ProductsList = (props:ProductsListProps) => {
+ 
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">

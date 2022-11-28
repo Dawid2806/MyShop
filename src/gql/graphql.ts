@@ -4394,7 +4394,7 @@ export type GetAllProductsInCategoryQueryVariables = Exact<{
 }>;
 
 
-export type GetAllProductsInCategoryQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', id: string, products: Array<{ __typename?: 'Product', id: string, name?: string | null, price?: number | null, image?: { __typename?: 'Asset', url: string } | null }> }> };
+export type GetAllProductsInCategoryQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', id: string, products: Array<{ __typename?: 'Product', id: string, name?: string , price?: number , image?: { __typename?: 'Asset', url: string } | null }> }> };
 
 
 export const GetCategoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"products"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetCategoryQuery, GetCategoryQueryVariables>;

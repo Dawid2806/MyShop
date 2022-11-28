@@ -8,6 +8,7 @@ import {
 import Link from "next/link";
 import { Profil } from "../Profil/Profil";
 import { DropBox } from "../dropsbox/Dropbox";
+import { CartItem } from "../cartItem/CartItem";
 
 export const Nav = () => {
   const styleMenuWithMobileNav =
@@ -51,16 +52,7 @@ export const Nav = () => {
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <button
-                type="button"
-                className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              >
-                <span className="sr-only">Cart</span>
-                <ShoppingCartIcon
-                  className="h-6 w-6 mr-10"
-                  aria-hidden="true"
-                />
-              </button>
+             <CartItem />
             </div>
             <Profil />
           </div>
