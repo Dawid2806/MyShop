@@ -11,7 +11,7 @@ import { DropBox } from "../dropsbox/Dropbox";
 
 export const Nav = () => {
   const styleMenuWithMobileNav =
-    " text-gray-300    px-3 py-2 rounded-md text-base font-medium";
+    " w-2/12		text-gray-300 py-2 rounded-md text-base px-2  hover:bg-gray-700";
 
   const styleMenuDesktop =
     "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
@@ -22,7 +22,6 @@ export const Nav = () => {
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-              {/* Mobile menu button*/}
               <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                 <span className="sr-only">Open main menu</span>
                 {open ? (
@@ -34,15 +33,13 @@ export const Nav = () => {
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <span className="block text-white font-bold h-8 w-auto lg:hidden">
+                <h1 className="block text-white font-bold h-8 w-auto lg:hidden">
                   Dave Shop
-                </span>
-                <span className="hidden h-8 w-auto lg:block text-white font-bold">
-                  Dave Shop
-                </span>
+                </h1>
+            
               </div>
               <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-4">
+                <div className="flex ">
                   <Link href={"/"}>
                     <a className={styleMenuDesktop}>Home</a>
                   </Link>
@@ -69,15 +66,13 @@ export const Nav = () => {
           </div>
           <Disclosure.Panel className="sm:hidden">
             <div className="flex flex-col space-y-1 px-2 pt-2 pb-3">
-              <Disclosure.Button as="a" className={styleMenuWithMobileNav}>
-                Home
-              </Disclosure.Button>
-              <Disclosure.Button as="a" className={styleMenuWithMobileNav}>
-                About
-              </Disclosure.Button>
-              <Disclosure.Button as="a" className={styleMenuWithMobileNav}>
-                <DropBox />
-              </Disclosure.Button>
+             <Link href={''}>
+              <a className={styleMenuWithMobileNav} >Home</a>
+             </Link>
+             <Link href={''} >
+              <a className={styleMenuWithMobileNav} >About</a>
+             </Link>
+                  <DropBox />
             </div>
           </Disclosure.Panel>
         </div>

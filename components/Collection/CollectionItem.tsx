@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { itemsProps } from "../../typs";
 import { Item } from "./Collection";
@@ -20,14 +21,12 @@ export const CollectionItem = (props: collectionItemProps) => {
           return (
             <Link key={item.id} href={"#"}>
               <a className="block">
-                <picture>
-                  <img
-                    alt={`${item.name}`}
-                    src={item.image?.url}
-                    className="aspect-square w-full rounded object-cover"
-                  />
-                </picture>
-
+               <Image alt={""}
+                    src={`${item.image?.url}`}
+                    width={400}
+                    height={500}
+                    layout="responsive"
+                    className="aspect-square w-full  rounded object-cover"/>
                 <div className="mt-2">
                   <h5 className="font-medium">{item.name}</h5>
 

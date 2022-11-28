@@ -10,7 +10,7 @@ export const DropBox = () => {
   return (
     <Menu as="div" className="relative flex items-center text-left">
       <div>
-        <Menu.Button className="flex justify-center items-center  text-gray-300 hover:bg-gray-700 hover:text-white   bg-gray-800     ">
+        <Menu.Button className="flex justify-center items-center py-2 rounded-md text-base px-2  text-gray-300 hover:bg-gray-700 hover:text-white   bg-gray-800 ">
           Products
           <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
         </Menu.Button>
@@ -30,7 +30,7 @@ export const DropBox = () => {
             <Menu.Item>
               <span>
 
-              <Link  href="/watch" passHref >
+              <Link  href="/watch"  >
                 <a className={categoryStyle}>WATCH</a>
               </Link>
               </span>
@@ -38,7 +38,7 @@ export const DropBox = () => {
             <Menu.Item>
               <span>
 
-              <Link href="/shoes" passHref >
+              <Link href="/shoes"  >
                 <a className={categoryStyle}>SHOES</a>
               </Link>
               </span>
@@ -46,7 +46,7 @@ export const DropBox = () => {
             <Menu.Item>
               <span>
 
-              <Link href="/t-shirts" passHref>
+              <Link href="/t-shirts" >
                 <a className={categoryStyle}>T-SHIRTSES</a>
               </Link>
               </span>
@@ -54,7 +54,7 @@ export const DropBox = () => {
             <Menu.Item>
               <span>
                 
-                <Link href="/sweatshirts" passHref>
+                <Link href="/sweatshirts" >
                   <a className={categoryStyle}>SWEATSHIRTS</a>
                 </Link>
               </span>
