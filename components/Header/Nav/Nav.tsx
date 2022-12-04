@@ -7,8 +7,8 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Profil } from "../Profil/Profil";
-import { DropBox } from "../dropsbox/Dropbox";
-import { CartItem } from "../cartItem/CartItem";
+import { DropBox } from "../ProductsDropBox/Dropbox";
+import { CartItem } from "../CartInNav/CartCounter";
 
 export const Nav = () => {
   const styleMenuWithMobileNav =
