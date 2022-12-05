@@ -24,7 +24,6 @@ export const useCart = () => {
           return {
             ...existingItem,
             count: existingItem.count + 1,
-            price: existingItem.price + existingItem.price,
           };
         }
         return existingItem;
@@ -34,7 +33,10 @@ export const useCart = () => {
   const removeItemFromCart = (id: string) => {
     setCartItems((prevState = []) => {
       const existingItem = prevState.find((eItem) => eItem.id === id);
-      if (existingItem && existingItem.count <= 1) {
+      if(!existingItem){
+        return
+      }
+      if ( existingItem.count <= 1) {
         return prevState.filter((eItem) => eItem.id !== id);
       }
       return prevState.map((eItem) => {
@@ -60,7 +62,6 @@ export const useCart = () => {
         return {
           ...existingItem,
           count: existingItem.count + 1,
-          price: existingItem.price + existingItem.price,
         };
       }
       return existingItem;
