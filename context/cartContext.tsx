@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { Cart } from "../components/Cart/Cart";
 import {
   getCartItemsFromLocalStorage,
   setCartFromLocalStorage,
@@ -33,7 +32,7 @@ export const CartStateContextProvider = ({
     cartItems,
     removeItemFromCart,
     setCartItems,
-    totalAmount,
+    getCartTotalAmount,
   } = useCart();
   const updatedCart = (item: CartItem) => {
     addItemToCart(item);
@@ -49,14 +48,13 @@ export const CartStateContextProvider = ({
     }
     setCartFromLocalStorage(cartItems);
   }, [cartItems]);
-  console.log(totalAmount())
   return (
     <CartStateContext.Provider
       value={{
         items: cartItems || [],
         addItemToCart: updatedCart,
         removeItemFromCart: removeItemFromCart,
-        totalAmount: totalAmount,
+        totalAmount: getCartTotalAmount,
       }}
     >
       {children}
