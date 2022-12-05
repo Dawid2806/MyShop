@@ -1,23 +1,22 @@
-import React from 'react'
-import { useCartState } from '../../hooks/useContext';
-import Image from 'next/image';
+import React from "react";
+import { useCartState } from "../../hooks/useContext";
+import Image from "next/image";
 interface CartItemProps {
-    id: string;
-    title: string;
-    price: number;
-    count: number;
-    image: string
-  }
-export const CartItem = (props:CartItemProps) => {
-    const cartState = useCartState()
-    console.log(props.image)
+  id: string;
+  title: string;
+  price: number;
+  count: number;
+  image: string;
+}
+export const CartItem = (props: CartItemProps) => {
+  const cartState = useCartState();
   return (
     <li className="flex py-6 lg:mx-12 xl:mx-20">
       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
         <Image
-        height={96}
-        width={96}
-        layout="responsive"
+          height={96}
+          width={96}
+          layout="responsive"
           src={props.image}
           alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
           className="h-full w-full object-cover object-center"
@@ -54,5 +53,5 @@ export const CartItem = (props:CartItemProps) => {
         </div>
       </div>
     </li>
-  )
-}
+  );
+};
