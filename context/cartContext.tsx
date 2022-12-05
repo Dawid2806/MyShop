@@ -49,6 +49,7 @@ export const CartStateContextProvider = ({
     }
     setCartFromLocalStorage(cartItems);
   }, [cartItems]);
+  console.log(totalAmount())
   return (
     <CartStateContext.Provider
       value={{
