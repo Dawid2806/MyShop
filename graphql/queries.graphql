@@ -29,15 +29,24 @@ query GetProductDebailsBySlug($slug: String) {
 }
 
 query GetAllProductsInCategory($name: String) {
-    categories(where: {name: $name}) {
+  categories(where: { name: $name }) {
     id
     products {
       id
       name
       price
+      slug
       image {
         url
       }
+    }
+  }
+}
+
+query GetProductSlug {
+  categories {
+    products {
+      slug
     }
   }
 }

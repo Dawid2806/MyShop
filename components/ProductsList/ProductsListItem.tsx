@@ -4,6 +4,7 @@ import { useCartState } from "../../hooks/useContext";
 
 interface ProductsListItemProps {
   id: string;
+  slug: string | undefined;
   imageSrc: string | undefined | null;
   imageAlt: string | undefined | null;
   name: string | undefined;
@@ -16,6 +17,7 @@ export const ProductsListItem = ({
   imageAlt,
   name,
   price,
+  slug,
 }: ProductsListItemProps) => {
   const cartState = useCartState();
 
@@ -31,7 +33,7 @@ export const ProductsListItem = ({
       <div className="mt-4 flex justify-between">
         <div>
           <h3 className="text-sm text-gray-700">
-            <Link href="/dupa">
+            <Link href={`/product/${slug}`}>
               <a>{name}</a>
             </Link>
           </h3>
@@ -47,7 +49,7 @@ export const ProductsListItem = ({
               title: String(name),
               count: 1,
               image: String(imageSrc),
-              totalAmount: 0
+              totalAmount: 0,
             });
           }}
           className="m-auto  bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-xl"
