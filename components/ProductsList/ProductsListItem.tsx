@@ -24,9 +24,10 @@ export const ProductsListItem = ({
 
   return (
     <div key={id} className="group relative">
-      <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+      <div className=" aspect-w-1  w-full overflow-hidden rounded-md  group-hover:opacity-75 ">
         <Image
-          layout="fill"
+          width={500}
+          height={400}
           src={`${imageSrc}`}
           alt={`${imageAlt}`}
           className="h-full w-full object-cover object-center lg:h-full lg:w-full"

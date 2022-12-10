@@ -6,6 +6,8 @@ import {
   GetAllProductsInCurrenCategoryDocument,
   GetAllProductsInCurrenCategoryQuery,
   GetAllProductsInCurrenCategoryQueryVariables,
+  GetCategoryDocument,
+  GetCategoryQuery,
 } from "../../src/gql/graphql";
 import { InferGetStaticPaths } from "../../typs";
 
@@ -27,22 +29,18 @@ const ProductsListPage = ({
 export default ProductsListPage;
 
 export const getStaticPaths = async () => {
-  const myParams: string[] = [
-    "watch",
-    "t-shirts",
-    "shoes",
-    "hoodies",
-    "accessories",
-  ];
-  const paths = myParams.map((el) => {
-    return {
-      params: {
-        productsList: el,
-      },
-    };
+  const { data } = await apolloClient.query<GetCategoryQuery>({
+    query: GetCategoryDocument,
   });
+
   return {
-    paths,
+    paths: data.categories.map((category) => {
+      return {
+        params: {
+          productsList: category.slug,
+        },
+      };
+    }),
     fallback: false,
   };
 };
