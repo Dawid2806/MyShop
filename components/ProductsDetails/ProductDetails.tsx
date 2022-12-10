@@ -1,6 +1,8 @@
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import { useCartState } from "../../hooks/useContext";
 
 interface ProductDetailsProps {
@@ -11,9 +13,9 @@ interface Product {
   id: string | undefined;
   name: string | undefined;
   price: number | undefined;
-  image: string;
-  description: string | undefined;
-  slug: string;
+  image: string | undefined;
+  description: MDXRemoteSerializeResult<Record<string, unknown>>;
+  slug: string | undefined;
 }
 
 export const ProductDetails = ({ ProductProps }: ProductDetailsProps) => {
@@ -22,7 +24,7 @@ export const ProductDetails = ({ ProductProps }: ProductDetailsProps) => {
     <>
       <NextSeo
         title={ProductProps.name}
-        description={ProductProps.description}
+        description={ProductProps.name}
         canonical={`https://my-shop-topaz-five.vercel.app/${ProductProps.slug}`}
       />
       <section>
@@ -44,7 +46,7 @@ export const ProductDetails = ({ ProductProps }: ProductDetailsProps) => {
                   height={9}
                   objectFit="contain"
                   alt={ProductProps.name}
-                  src={ProductProps.image}
+                  src={`${ProductProps.image}`}
                   quality="100"
                   className="h-72 w-full rounded-xl object-cover lg:h-[540px]"
                 />
@@ -111,7 +113,7 @@ export const ProductDetails = ({ ProductProps }: ProductDetailsProps) => {
 
             <div className="lg:col-span-3">
               <div className="prose max-w-none [&>iframe]:mt-6 [&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:rounded-xl mb-10">
-                <p>{ProductProps.description}</p>
+                <MDXRemote {...ProductProps.description} />
               </div>
             </div>
           </div>

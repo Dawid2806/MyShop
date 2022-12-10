@@ -1,5 +1,4 @@
 import { InferGetServerSidePropsType } from "next";
-import { useRouter } from "next/router";
 import React from "react";
 import { ProductDetails } from "../../components/ProductsDetails/ProductDetails";
 import { apolloClient } from "../../graphql/apolloClient";
@@ -11,7 +10,8 @@ import {
   GetProductsSlugsQuery,
 } from "../../src/gql/graphql";
 import { InferGetStaticPaths } from "../../typs";
-
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
 const ProductsDetailsPage = ({
   data,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
@@ -21,12 +21,12 @@ const ProductsDetailsPage = ({
   return (
     <ProductDetails
       ProductProps={{
-        id: data?.id,
-        name: data?.name,
-        price: data?.price,
-        image: data?.images[0].url,
-        description: data?.description,
-        slug: data.slug,
+        id: data.product?.id,
+        name: data.product?.name,
+        price: data.product?.price,
+        image: data.product?.images[0].url,
+        description: data.longDescription,
+        slug: data.product?.slug,
       }}
     />
   );
@@ -69,7 +69,10 @@ export const getStaticProps = async ({
 
   return {
     props: {
-      data: data.product,
+      data: {
+        ...data,
+        longDescription: await serialize(data.product?.description),
+      },
     },
   };
 };
