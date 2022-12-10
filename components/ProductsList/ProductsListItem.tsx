@@ -1,13 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useCartState } from "../../hooks/useContext";
 
 interface ProductsListItemProps {
   id: string;
-  imageSrc: string | undefined | null;
-  imageAlt: string | undefined | null;
-  name: string | undefined;
-  price: number | undefined;
+  slug: string;
+  imageSrc: string;
+  imageAlt: string;
+  name: string;
+  price: number;
 }
 
 export const ProductsListItem = ({
@@ -16,13 +18,16 @@ export const ProductsListItem = ({
   imageAlt,
   name,
   price,
+  slug,
 }: ProductsListItemProps) => {
   const cartState = useCartState();
 
   return (
     <div key={id} className="group relative">
-      <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-        <img
+      <div className=" aspect-w-1  w-full overflow-hidden rounded-md  group-hover:opacity-75 ">
+        <Image
+          width={500}
+          height={400}
           src={`${imageSrc}`}
           alt={`${imageAlt}`}
           className="h-full w-full object-cover object-center lg:h-full lg:w-full"
@@ -31,7 +36,7 @@ export const ProductsListItem = ({
       <div className="mt-4 flex justify-between">
         <div>
           <h3 className="text-sm text-gray-700">
-            <Link href="/dupa">
+            <Link href={`/productDetail/${slug}`}>
               <a>{name}</a>
             </Link>
           </h3>
@@ -47,7 +52,7 @@ export const ProductsListItem = ({
               title: String(name),
               count: 1,
               image: String(imageSrc),
-              totalAmount: 0
+              totalAmount: 0,
             });
           }}
           className="m-auto  bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-xl"

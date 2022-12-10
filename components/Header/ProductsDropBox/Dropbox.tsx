@@ -29,37 +29,39 @@ export const DropBox = () => {
           <div className="py-1">
             <Menu.Item>
               <span>
-
-              <Link  href="/watch"  >
-                <a className={categoryStyle}>WATCH</a>
-              </Link>
-              </span>
-            </Menu.Item>
-            <Menu.Item>
-              <span>
-
-              <Link href="/shoes"  >
-                <a className={categoryStyle}>SHOES</a>
-              </Link>
-              </span>
-            </Menu.Item>
-            <Menu.Item>
-              <span>
-
-              <Link href="/t-shirts" >
-                <a className={categoryStyle}>T-SHIRTSES</a>
-              </Link>
-              </span>
-            </Menu.Item>
-            <Menu.Item>
-              <span>
-                
-                <Link href="/sweatshirts" >
-                  <a className={categoryStyle}>SWEATSHIRTS</a>
+                <Link href="/watch">
+                  <a className={categoryStyle}>Watches</a>
                 </Link>
               </span>
-              </Menu.Item>
-          
+            </Menu.Item>
+            <Menu.Item>
+              <span>
+                <Link href="/shoes">
+                  <a className={categoryStyle}>Shoes</a>
+                </Link>
+              </span>
+            </Menu.Item>
+            <Menu.Item>
+              <span>
+                <Link href="/t-shirts">
+                  <a className={categoryStyle}>T-Shirtses</a>
+                </Link>
+              </span>
+            </Menu.Item>
+            <Menu.Item>
+              <span>
+                <Link href="/hoodies">
+                  <a className={categoryStyle}>Sweatshirts</a>
+                </Link>
+              </span>
+            </Menu.Item>
+            <Menu.Item>
+              <span>
+                <Link href="/accessories">
+                  <a className={categoryStyle}>Accessories</a>
+                </Link>
+              </span>
+            </Menu.Item>
           </div>
         </Menu.Items>
       </Transition>

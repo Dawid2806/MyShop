@@ -1,60 +1,71 @@
-import { GetStaticPaths, GetStaticProps, InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
+import { InferGetServerSidePropsType } from "next";
 import React from "react";
 import { ProductsList } from "../../components/ProductsList/ProductsList";
 import { apolloClient } from "../../graphql/apolloClient";
-import { GetAllProductsInCategoryDocument, GetAllProductsInCategoryQuery, GetAllProductsInCategoryQueryVariables } from "../../src/gql/graphql";
+import {
+  GetAllProductsInCurrenCategoryDocument,
+  GetAllProductsInCurrenCategoryQuery,
+  GetAllProductsInCurrenCategoryQueryVariables,
+  GetCategoryDocument,
+  GetCategoryQuery,
+} from "../../src/gql/graphql";
 import { InferGetStaticPaths } from "../../typs";
 
-const ProductsListPage = ({ data } : InferGetServerSidePropsType<typeof getStaticProps>) => {
-  if(!data){
-    return <div>coś poszło nie tak</div>
+const ProductsListPage = ({
+  data,
+}: InferGetServerSidePropsType<typeof getStaticProps>) => {
+  if (!data) {
+    return <div>coś poszło nie tak</div>;
   }
-  return <>
-  <div> 
-   
-    <ProductsList items={data[0].products} />
-  </div>
-  </> 
+  return (
+    <>
+      <div>
+        <ProductsList items={data[0].products} />
+      </div>
+    </>
+  );
 };
 
 export default ProductsListPage;
 
-
-
-
-
 export const getStaticPaths = async () => {
-  const myParams: string[] = ["watch","t-shirts","shoes","sweatshirts"]
-  const paths = myParams.map((el) => {
-    return {
-      params: {
-        productsList : el
-      }
-    }
+  const { data } = await apolloClient.query<GetCategoryQuery>({
+    query: GetCategoryDocument,
   });
+
   return {
-    paths,
-    fallback: false
-  }
+    paths: data.categories.map((category) => {
+      return {
+        params: {
+          productsList: category.slug,
+        },
+      };
+    }),
+    fallback: false,
+  };
 };
 
-export const getStaticProps = async ({params}: InferGetStaticPaths<typeof getStaticPaths>)=>{
-  if(!params?.productsList){
-    return{
-      props:{},
-    }
+export const getStaticProps = async ({
+  params,
+}: InferGetStaticPaths<typeof getStaticPaths>) => {
+  if (!params?.productsList) {
+    return {
+      props: {},
+    };
   }
-  const {data} =await apolloClient.query<GetAllProductsInCategoryQuery,GetAllProductsInCategoryQueryVariables>({
-    variables:{
-      name: params?.productsList.toString()
+  const { data } = await apolloClient.query<
+    GetAllProductsInCurrenCategoryQuery,
+    GetAllProductsInCurrenCategoryQueryVariables
+  >({
+    variables: {
+      slug: params?.productsList.toString(),
     },
-    query: GetAllProductsInCategoryDocument,
+    query: GetAllProductsInCurrenCategoryDocument,
+  });
 
-  })
-  
   return {
-    props:{
-      data: data.categories
-    }
-  }
-}
+    props: {
+      data: data.categories,
+    },
+  };
+};

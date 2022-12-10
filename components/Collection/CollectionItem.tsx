@@ -19,14 +19,16 @@ export const CollectionItem = (props: collectionItemProps) => {
       {item.map((item, index) => {
         if (index < 3) {
           return (
-            <Link key={item.id} href={"#"}>
+            <Link key={item.id} href={`/productDetail/${item.slug}`}>
               <a className="block">
-               <Image alt={""}
-                    src={`${item.image?.url}`}
-                    width={400}
-                    height={500}
-                    layout="responsive"
-                    className="aspect-square w-full  rounded object-cover"/>
+                <Image
+                  alt={""}
+                  src={item.images[0].url}
+                  width={400}
+                  height={500}
+                  layout="responsive"
+                  className="aspect-square w-full  rounded object-cover"
+                />
                 <div className="mt-2">
                   <h5 className="font-medium">{item.name}</h5>
 
