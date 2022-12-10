@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import React from "react";
-import { useCart } from "../../hooks/useCart";
+import { useCartState } from "../../hooks/useContext";
 
 interface ProductDetailsProps {
   ProductProps: Product;
@@ -17,7 +17,7 @@ interface Product {
 }
 
 export const ProductDetails = ({ ProductProps }: ProductDetailsProps) => {
-  const cartState = useCart();
+  const cartState = useCartState();
   return (
     <>
       <NextSeo
