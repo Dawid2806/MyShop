@@ -15,7 +15,6 @@ const ProductsListPage = ({
   if (!data) {
     return <div>coś poszło nie tak</div>;
   }
-  console.log(data);
   return (
     <>
       <div>
