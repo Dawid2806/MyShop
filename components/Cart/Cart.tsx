@@ -38,9 +38,24 @@ export const Cart = () => {
             </div>
           </div>
           <div className="border-t border-gray-200 py-6 px-4 sm:px-6 lg:flex flex-col justify-end">
-            <div className="flex justify-between text-base font-medium text-gray-900">
-              <p>Subtotal</p>
-              <p>{cartState.totalAmount()}</p>
+            <div className="flex flex-col   text-base font-medium text-gray-900">
+              <div className="flex flex-col justify-center items-center gap-5">
+                <div>
+                  {cartState.items.map((el) => {
+                    return (
+                      <div className="grid  grid-cols-3 grid-rows-1 gap-6  ">
+                        <div>{el.title}</div>
+                        <div>{el.count}x</div>
+                        <div>{el.price * el.count}$</div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="flex">
+                  <p>Subtotal : </p>
+                  <p className="ml-5">{cartState.totalAmount()}$ </p>
+                </div>
+              </div>
             </div>
             <p className="mt-0.5 text-sm text-gray-500">
               Shipping and taxes calculated at checkout.
