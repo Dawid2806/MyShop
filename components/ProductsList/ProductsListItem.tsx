@@ -25,7 +25,8 @@ export const ProductsListItem = ({
   return (
     <div key={id} className="group relative">
       <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-        <img
+        <Image
+          layout="fill"
           src={`${imageSrc}`}
           alt={`${imageAlt}`}
           className="h-full w-full object-cover object-center lg:h-full lg:w-full"
