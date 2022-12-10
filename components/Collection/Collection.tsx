@@ -6,6 +6,7 @@ import { CollectionTitle } from "./CollectionTitle";
 interface ProductsCollectionsListProps {
   category: string | null | undefined;
   categoryDescription: string | null | undefined;
+  slug: string;
   items: Item[];
 }
 
@@ -29,6 +30,7 @@ export const Collection = (props: ProductsCollectionsListProps) => {
         </h3>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
           <CollectionTitle
+            slug={props.slug}
             category={props.category}
             categoryDescription={props.categoryDescription}
           />

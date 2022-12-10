@@ -2,7 +2,6 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import { useCartState } from "../../hooks/useContext";
 
 interface ProductDetailsProps {

@@ -1,7 +1,9 @@
+import Link from "next/link";
 import React from "react";
 interface ProductsCollectionsListProps {
   category: string | null | undefined;
-  categoryDescription: string  | null | undefined;
+  categoryDescription: string | null | undefined;
+  slug: string;
 }
 export const CollectionTitle = (props: ProductsCollectionsListProps) => {
   return (
@@ -13,12 +15,11 @@ export const CollectionTitle = (props: ProductsCollectionsListProps) => {
           {props.categoryDescription}
         </p>
 
-        <a
-          href="#"
-          className="mt-6 inline-block rounded bg-black px-6 py-3 text-sm text-white"
-        >
-          View the Range
-        </a>
+        <Link href={props.slug}>
+          <a className="mt-6 inline-block rounded bg-black px-6 py-3 text-sm text-white">
+            View the Range
+          </a>
+        </Link>
       </div>
     </div>
   );
