@@ -15,7 +15,6 @@ import { InferGetStaticPaths } from "../../typs";
 const ProductsDetailsPage = ({
   data,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  console.log(data);
   if (!data) {
     return;
   }
