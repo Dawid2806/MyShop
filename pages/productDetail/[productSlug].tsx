@@ -26,6 +26,7 @@ const ProductsDetailsPage = ({
         price: data?.price,
         image: data?.images[0].url,
         description: data?.description,
+        slug: data.slug,
       }}
     />
   );
