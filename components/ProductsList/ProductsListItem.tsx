@@ -1,14 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useCartState } from "../../hooks/useContext";
 
 interface ProductsListItemProps {
   id: string;
-  slug: string | undefined;
-  imageSrc: string | undefined | null;
-  imageAlt: string | undefined | null;
-  name: string | undefined;
-  price: number | undefined;
+  slug: string;
+  imageSrc: string;
+  imageAlt: string;
+  name: string;
+  price: number;
 }
 
 export const ProductsListItem = ({
@@ -33,7 +34,7 @@ export const ProductsListItem = ({
       <div className="mt-4 flex justify-between">
         <div>
           <h3 className="text-sm text-gray-700">
-            <Link href={`/product/${slug}`}>
+            <Link href={`/productDetail/${slug}`}>
               <a>{name}</a>
             </Link>
           </h3>

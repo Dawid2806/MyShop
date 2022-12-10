@@ -1,52 +1,62 @@
 query GetCategory {
   categories {
-    name
-    id
     description
+    slug
+    id
+    name
     products {
-      name
       id
+      name
       price
-      image {
+      slug
+      images {
         url
       }
+    }
+  }
+}
+
+query GetProductsSlugs {
+  products {
+    slug
+  }
+}
+
+query GetAllProductsInShop {
+  products {
+    name
+    slug
+    id
+    price
+    images {
+      url
     }
   }
 }
 
 query GetProductDebailsBySlug($slug: String) {
   product(where: { slug: $slug }) {
-    name
-    longDescription
     id
-    description
-    slug
+    name
     price
-    image {
+    slug
+    description
+    images(first: 1) {
       url
+      stage
     }
   }
 }
-
-query GetAllProductsInCategory($name: String) {
-  categories(where: { name: $name }) {
-    id
+query GetAllProductsInCurrenCategory($slug: String) {
+  categories(where: { slug: $slug }) {
     products {
       id
       name
       price
       slug
-      image {
+      images {
         url
       }
-    }
-  }
-}
-
-query GetProductSlug {
-  categories {
-    products {
-      slug
     }
   }
 }

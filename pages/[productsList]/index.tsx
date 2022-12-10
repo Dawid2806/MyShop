@@ -3,9 +3,9 @@ import React from "react";
 import { ProductsList } from "../../components/ProductsList/ProductsList";
 import { apolloClient } from "../../graphql/apolloClient";
 import {
-  GetAllProductsInCategoryDocument,
-  GetAllProductsInCategoryQuery,
-  GetAllProductsInCategoryQueryVariables,
+  GetAllProductsInCurrenCategoryDocument,
+  GetAllProductsInCurrenCategoryQuery,
+  GetAllProductsInCurrenCategoryQueryVariables,
 } from "../../src/gql/graphql";
 import { InferGetStaticPaths } from "../../typs";
 
@@ -15,6 +15,7 @@ const ProductsListPage = ({
   if (!data) {
     return <div>coś poszło nie tak</div>;
   }
+  console.log(data);
   return (
     <>
       <div>
@@ -27,7 +28,13 @@ const ProductsListPage = ({
 export default ProductsListPage;
 
 export const getStaticPaths = async () => {
-  const myParams: string[] = ["watch", "t-shirts", "shoes", "sweatshirts"];
+  const myParams: string[] = [
+    "watch",
+    "t-shirts",
+    "shoes",
+    "hoodies",
+    "accessories",
+  ];
   const paths = myParams.map((el) => {
     return {
       params: {
@@ -50,13 +57,13 @@ export const getStaticProps = async ({
     };
   }
   const { data } = await apolloClient.query<
-    GetAllProductsInCategoryQuery,
-    GetAllProductsInCategoryQueryVariables
+    GetAllProductsInCurrenCategoryQuery,
+    GetAllProductsInCurrenCategoryQueryVariables
   >({
     variables: {
-      name: params?.productsList.toString(),
+      slug: params?.productsList.toString(),
     },
-    query: GetAllProductsInCategoryDocument,
+    query: GetAllProductsInCurrenCategoryDocument,
   });
 
   return {

@@ -1,20 +1,18 @@
 import React from "react";
 import { ProductsListItem } from "./ProductsListItem";
 
-interface ProductsListProps {
-  items: Array<{
-    __typename?: "Product";
-    id: string;
-    name?: string;
-    price?: number;
-    slug?: string;
-    image?: {
-      __typename?: "Asset";
-      url: string;
-    };
-  }>;
+export interface ProductsListProps {
+  items: props[];
 }
-
+export type props = {
+  id: string;
+  name: string;
+  price: number;
+  slug: string;
+  images: {
+    url: string;
+  }[];
+};
 export const ProductsList = (props: ProductsListProps) => {
   return (
     <div className="bg-white">
@@ -32,7 +30,7 @@ export const ProductsList = (props: ProductsListProps) => {
                 id={item.id}
                 name={item.name}
                 price={item.price}
-                imageSrc={item.image?.url}
+                imageSrc={item.images[0].url}
                 imageAlt={item.name}
               />
             );

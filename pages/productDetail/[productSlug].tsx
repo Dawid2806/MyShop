@@ -1,47 +1,57 @@
 import { InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
 import React from "react";
+import { ProductDetails } from "../../components/ProductsDetails/ProductDetails";
 import { apolloClient } from "../../graphql/apolloClient";
 import {
   GetProductDebailsBySlugDocument,
   GetProductDebailsBySlugQuery,
   GetProductDebailsBySlugQueryVariables,
-  GetProductSlugDocument,
-  GetProductSlugQuery,
+  GetProductsSlugsDocument,
+  GetProductsSlugsQuery,
 } from "../../src/gql/graphql";
+import { InferGetStaticPaths } from "../../typs";
 
 const ProductsDetailsPage = ({
   data,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  const router = useRouter();
-  console.log(router);
-  return <div>index z products{data}</div>;
+  console.log(data);
+  if (!data) {
+    return;
+  }
+  return (
+    <ProductDetails
+      ProductProps={{
+        id: data?.id,
+        name: data?.name,
+        price: data?.price,
+        image: data?.images[0].url,
+        description: data?.description,
+      }}
+    />
+  );
 };
 
 export const getStaticPaths = async () => {
-  const { data } = await apolloClient.query<GetProductSlugQuery>({
-    query: GetProductSlugDocument,
+  const { data } = await apolloClient.query<GetProductsSlugsQuery>({
+    query: GetProductsSlugsDocument,
   });
 
   return {
-    paths: data.categories.map((category) => {
-      return category.products.map((product) => {
-        return {
-          params: {
-            productSlug: product.slug.toString(),
-          },
-        };
-      });
+    paths: data.products.map((product) => {
+      return {
+        params: {
+          productSlug: product.slug,
+        },
+      };
     }),
     fallback: false,
   };
 };
-type Params = {
-  params: {
-    productSlug: string;
-  };
-};
-export const getStaticProps = async ({ params }: Params) => {
+
+export const getStaticProps = async ({
+  params,
+}: InferGetStaticPaths<typeof getStaticPaths>) => {
   if (!params || !params.productSlug) {
     return {
       props: {},
@@ -59,7 +69,7 @@ export const getStaticProps = async ({ params }: Params) => {
 
   return {
     props: {
-      data: { ...data.product },
+      data: data.product,
     },
   };
 };

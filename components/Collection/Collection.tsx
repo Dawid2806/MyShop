@@ -9,7 +9,13 @@ interface ProductsCollectionsListProps {
   items: Item[];
 }
 
-export type Item = {__typename?: 'Product', name?: string | null, id: string, price?: number | null, image?: { __typename?: 'Asset', url: string } | null }
+export type Item = {
+  id: string;
+  name: string;
+  price: number;
+  slug: string;
+  images: { url: string }[];
+};
 
 export const Collection = (props: ProductsCollectionsListProps) => {
   return (
