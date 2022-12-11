@@ -23,6 +23,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-form-hooks": "^1.1.5",
+    "react-hook-form": "^7.40.0",
     "ts-node": "^10.9.1",
     "yup": "^0.32.11"
   },

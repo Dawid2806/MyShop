@@ -1,6 +1,6 @@
 import React from "react";
 import { useCartState } from "../../hooks/useContext";
-import { ItemInCheckout } from "./itemInCheckout";
+import { ItemInCheckout } from "./ItemInCheckout";
 export const CheckoutDetails = () => {
   const cartState = useCartState();
   return (
@@ -26,6 +26,7 @@ export const CheckoutDetails = () => {
               {cartState.items.map((item) => {
                 return (
                   <ItemInCheckout
+                    key={item.id}
                     name={item.title}
                     image={item.image}
                     count={item.count}

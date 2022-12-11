@@ -1,89 +1,96 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
-import { Input } from "./Input";
+import { useForm, FormProvider, useFormContext } from "react-hook-form";
+import { Input, Select } from "./Input";
+import { schema } from "./Schema";
+
+type FormData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: number;
+  cardNumber: number;
+  cardExpiry: number;
+  cardCVC: number;
+  coutry: string;
+  postalCode: string;
+};
 
 export const CheckoutForm = () => {
+  const methods = useForm<FormData>({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = (data: FormData) => console.log(data);
+
   return (
-    <form className="grid grid-cols-6 gap-4">
-      <Input
-        InputName="First Name"
-        inputType="text"
-        inputId="FirstName"
-        col={3}
-      />
-      <Input
-        InputName="Last Name"
-        inputType="text"
-        inputId="LastName"
-        col={3}
-      />
-      <Input InputName="Email" inputType="Email" inputId="Email" col={6} />
-      <Input InputName="Phone" inputType="tel" inputId="Phone" col={6} />
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
+        <Input label="First Name" type="text" name="firstName" />
 
-      <fieldset className="col-span-6">
-        <legend className="block text-sm font-medium text-gray-700">
-          Card Details
-        </legend>
+        <Input label="Last Name" type="text" name="lastName" />
+        <Input label="Email" type="Email" name="email" />
+        <Input label="Phone" type="tel" name="phone" />
 
-        <div className="mt-1 -space-y-px bg-white rounded-md shadow-sm">
-          <div>
-            <Input
-              inputType={"text"}
-              inputId={"CardNumber"}
-              placeholder="Card Number"
-            />
-          </div>
+        <fieldset className="col-span-6">
+          <legend className="block text-sm font-medium text-gray-700">
+            Card Details
+          </legend>
 
-          <div className="flex -space-x-px">
-            <div className="flex-1">
+          <div className="mt-1 -space-y-px bg-white rounded-md shadow-sm">
+            <div>
               <Input
-                inputType={"text"}
-                inputId={"CardExpiry"}
-                placeholder="Expiry Date"
+                type={"text"}
+                name={"cardNumber"}
+                placeholder="Card Number"
               />
             </div>
 
-            <div className="flex-1">
-              <Input inputType={"text"} inputId={"CardCVC"} placeholder="CVC" />
+            <div className="flex -space-x-px">
+              <div className="flex-1">
+                <Input
+                  type={"text"}
+                  name={"cardExpiry"}
+                  placeholder="Expiry Date"
+                />
+              </div>
+
+              <div className="flex-1">
+                <Input type={"text"} name={"cardCVC"} placeholder="CVC" />
+              </div>
             </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
-      <fieldset className="col-span-6">
-        <legend className="block text-sm font-medium text-gray-700">
-          Billing Address
-        </legend>
+        <fieldset className="col-span-6">
+          <legend className="block text-sm font-medium text-gray-700">
+            Billing Address
+          </legend>
 
-        <div className="mt-1 -space-y-px bg-white rounded-md shadow-sm">
-          <div>
-            <label htmlFor="Country" className="sr-only">
-              Country
-            </label>
+          <div className="mt-1 -space-y-px bg-white rounded-md shadow-sm">
+            <div>
+              <Select
+                label="Coutry"
+                name={"coutry"}
+                options={["Poland", "Germany", "England"]}
+              />
+            </div>
 
-            <select
-              id="Country"
-              className="relative w-full border-gray-200 rounded-t-md focus:z-10 sm:text-sm"
-            >
-              <option>Poland</option>
-              <option>Germany</option>
-            </select>
+            <div>
+              <Input
+                type={"text"}
+                name={"postalCode"}
+                placeholder="ZIP/Post Code"
+              />
+            </div>
           </div>
+        </fieldset>
 
-          <div>
-            <Input
-              inputType={"text"}
-              inputId={"PostalCode"}
-              placeholder="ZIP/Post Code"
-            />
-          </div>
+        <div className="col-span-6">
+          <button className="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg">
+            Pay Now
+          </button>
         </div>
-      </fieldset>
-
-      <div className="col-span-6">
-        <button className="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg">
-          Pay Now
-        </button>
-      </div>
-    </form>
+      </form>
+    </FormProvider>
   );
 };
