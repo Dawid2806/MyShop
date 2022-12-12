@@ -44,7 +44,10 @@ export const Cart = () => {
                 <div>
                   {cartState.items.map((el) => {
                     return (
-                      <div className="grid  grid-cols-3 grid-rows-1 gap-6  ">
+                      <div
+                        className="grid  grid-cols-3 grid-rows-1 gap-6  "
+                        key={el.id}
+                      >
                         <div>{el.title}</div>
                         <div>{el.count}x</div>
                         <div>{el.price * el.count}$</div>
