@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { useCartState } from "../../hooks/useContext";
 import { CartItem } from "./CartItem";
@@ -43,7 +44,10 @@ export const Cart = () => {
                 <div>
                   {cartState.items.map((el) => {
                     return (
-                      <div className="grid  grid-cols-3 grid-rows-1 gap-6  ">
+                      <div
+                        className="grid  grid-cols-3 grid-rows-1 gap-6  "
+                        key={el.id}
+                      >
                         <div>{el.title}</div>
                         <div>{el.count}x</div>
                         <div>{el.price * el.count}$</div>
@@ -61,12 +65,12 @@ export const Cart = () => {
               Shipping and taxes calculated at checkout.
             </p>
             <div className="mt-6">
-              <a
-                href="#"
-                className="flex w-6/12 mx-auto justify-center items-center  rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-              >
-                Checkout
-              </a>
+              <Link href="/checkout">
+                <a className="flex w-6/12 mx-auto justify-center items-center  rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
+                  {" "}
+                  Checkout
+                </a>
+              </Link>
             </div>
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>

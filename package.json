@@ -13,6 +13,7 @@
     "@apollo/client": "^3.7.1",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.11",
+    "@hookform/resolvers": "^2.9.10",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
     "graphql": "^16.6.0",
@@ -21,7 +22,10 @@
     "next-seo": "^5.14.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "ts-node": "^10.9.1"
+    "react-form-hooks": "^1.1.5",
+    "react-hook-form": "^7.40.0",
+    "ts-node": "^10.9.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.16.1",
