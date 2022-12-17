@@ -11,7 +11,6 @@ import {
 } from "../../src/gql/graphql";
 import { InferGetStaticPaths } from "../../typs";
 import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
 const ProductsDetailsPage = ({
   data,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
@@ -45,7 +44,7 @@ export const getStaticPaths = async () => {
         },
       };
     }),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
