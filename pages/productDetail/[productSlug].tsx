@@ -67,7 +67,7 @@ export const getStaticProps = async ({
     query: GetProductDebailsBySlugDocument,
   });
 
-  const longdes = data.product?.description;
+  const longdes = String(data.product?.description);
   return {
     props: {
       data: {
