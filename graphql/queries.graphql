@@ -65,3 +65,18 @@ query getCategorySlug {
     slug
   }
 }
+fragment reviewContent on Review {
+  headline
+  content
+  name
+  id
+  rating
+}
+
+query GetReviewsForProductsSlug($slug: String = "mug") {
+  product(where: { slug: $slug }) {
+    reviews {
+      ...reviewContent
+    }
+  }
+}

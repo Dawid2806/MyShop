@@ -2,14 +2,15 @@ import { InferGetServerSidePropsType } from "next";
 import React from "react";
 import { ProductsList } from "../../components/ProductsList/ProductsList";
 import { apolloClient } from "../../graphql/apolloClient";
+
+import { InferGetStaticPaths } from "../../typs";
 import {
   GetAllProductsInCurrenCategoryDocument,
   GetAllProductsInCurrenCategoryQuery,
   GetAllProductsInCurrenCategoryQueryVariables,
   GetCategoryDocument,
   GetCategoryQuery,
-} from "../../src/gql/graphql";
-import { InferGetStaticPaths } from "../../typs";
+} from "../../src/generated/graphql";
 
 const ProductsListPage = ({
   data,

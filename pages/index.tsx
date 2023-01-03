@@ -1,10 +1,12 @@
 import { Banner } from "../components/Banners/BannerBig";
 import { Collection } from "../components/Collection/Collection";
 
-import { GetCategoryDocument, GetCategoryQuery } from "../src/gql/graphql";
 import { apolloClient } from "../graphql/apolloClient";
 import { InferGetStaticPropsType } from "next";
-import { serialize } from "next-mdx-remote/serialize";
+import {
+  GetCategoryDocument,
+  GetCategoryQuery,
+} from "../src/generated/graphql";
 
 const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
