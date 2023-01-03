@@ -1,7 +1,7 @@
 import React from "react";
 import { useCreateProductReviewMutation } from "../../src/generated/graphql";
 
-const index = () => {
+const Index = () => {
   const [createReview, { data, loading, error }] =
     useCreateProductReviewMutation();
   const addReview = () => {
@@ -23,9 +23,8 @@ const index = () => {
       <button onClick={addReview} type="button">
         Add review
       </button>
-      <pre>{JSON.stringify(data, 2, null)}</pre>
     </div>
   );
 };
 
-export default index;
+export default Index;
