@@ -10786,7 +10786,7 @@ export type GetProductDebailsBySlugQueryVariables = Exact<{
 }>;
 
 
-export type GetProductDebailsBySlugQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string, price: number, slug: string, description: string, images: Array<{ __typename?: 'Asset', url: string, stage: Stage }> } | null };
+export type GetProductDebailsBySlugQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string, price: number, slug: string, description: any, images: Array<{ __typename?: 'Asset', url: string, stage: Stage }> } | null };
 
 export type GetAllProductsInCurrenCategoryQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
