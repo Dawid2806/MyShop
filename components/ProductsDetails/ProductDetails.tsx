@@ -14,7 +14,7 @@ interface Product {
   name: string | undefined;
   price: number | undefined;
   image: string | undefined;
-  description: MDXRemoteSerializeResult<Record<string, unknown>>;
+  description: MDXRemoteSerializeResult<Record<string, unknown>> | any;
   slug: string;
 }
 
