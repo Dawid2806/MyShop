@@ -15,7 +15,7 @@ import {
 const ProductsDetailsPage = ({
   data,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  if (!data) {
+  if (!data?.product) {
     return;
   }
   return (
