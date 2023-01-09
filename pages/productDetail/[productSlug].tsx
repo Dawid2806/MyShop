@@ -21,11 +21,12 @@ const ProductsDetailsPage = ({
   return (
     <ProductDetails
       ProductProps={{
-        id: data.product?.id,
-        name: data.product?.name,
-        price: data.product?.price,
-        image: data.product?.images[0].url,
-        slug: data.product?.slug,
+        id: data.product.id,
+        name: data.product.name,
+        price: data.product.price,
+        image: data.product.images[0].url,
+        description: data.longDescription,
+        slug: data.product.slug,
       }}
     />
   );
@@ -65,11 +66,17 @@ export const getStaticProps = async ({
     },
     query: GetProductDebailsBySlugDocument,
   });
-
+  if (!data || !data.product) {
+    return {
+      props: {},
+      notFound: true,
+    };
+  }
   return {
     props: {
       data: {
         ...data,
+        longDescription: await serialize(data.product.description),
       },
     },
   };
