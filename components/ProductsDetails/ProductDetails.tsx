@@ -3,7 +3,6 @@ import { NextSeo } from "next-seo";
 import Image from "next/image";
 import React from "react";
 import { useCartState } from "../../hooks/useContext";
-import { ProductReviewList } from "../ProductReview/ProductReviewList";
 import { ProductReviewContainer } from "../ProductReview/ProductReviewContainer";
 
 interface ProductDetailsProps {
