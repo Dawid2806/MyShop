@@ -2,12 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {
-  GetReviewsForProductsSlugDocument,
-  GetReviewsForProductsSlugQuery,
-  useCreateProductReviewMutation,
-} from "../../src/generated/graphql";
-import { resultKeyNameFromField } from "@apollo/client/utilities";
+
 import { useCreateReviews } from "../../hooks/useCreateReviews";
 
 interface ProductReviewProps {
