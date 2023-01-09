@@ -14,7 +14,6 @@ interface Product {
   name: string | undefined;
   price: number | undefined;
   image: string | undefined;
-  description: MDXRemoteSerializeResult<Record<string, unknown>> | any;
   slug: string;
 }
 
@@ -112,9 +111,7 @@ export const ProductDetails = ({ ProductProps }: ProductDetailsProps) => {
             </div>
 
             <div className="lg:col-span-3">
-              <div className="prose max-w-none [&>iframe]:mt-6 [&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:rounded-xl mb-10">
-                <MDXRemote {...ProductProps.description} />
-              </div>
+              <div className="prose max-w-none [&>iframe]:mt-6 [&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:rounded-xl mb-10"></div>
             </div>
           </div>
         </div>

@@ -25,7 +25,6 @@ const ProductsDetailsPage = ({
         name: data.product?.name,
         price: data.product?.price,
         image: data.product?.images[0].url,
-        description: data.longDescription,
         slug: data.product?.slug,
       }}
     />
@@ -71,7 +70,6 @@ export const getStaticProps = async ({
     props: {
       data: {
         ...data,
-        longDescription: await serialize(data.product?.description),
       },
     },
   };
