@@ -3,18 +3,19 @@ import { NextSeo } from "next-seo";
 import Image from "next/image";
 import React from "react";
 import { useCartState } from "../../hooks/useContext";
+import { ProductReviewContainer } from "../ProductReview/ProductReviewContainer";
 
 interface ProductDetailsProps {
   ProductProps: Product;
 }
 
 interface Product {
-  id: string | undefined;
-  name: string | undefined;
-  price: number | undefined;
-  image: string | undefined;
+  id: string;
+  name: string;
+  price: number;
+  image: string;
   description: MDXRemoteSerializeResult<Record<string, unknown>>;
-  slug: string | undefined;
+  slug: string;
 }
 
 export const ProductDetails = ({ ProductProps }: ProductDetailsProps) => {
@@ -116,6 +117,7 @@ export const ProductDetails = ({ ProductProps }: ProductDetailsProps) => {
               </div>
             </div>
           </div>
+          <ProductReviewContainer productSlug={ProductProps.slug} />
         </div>
       </section>
     </>

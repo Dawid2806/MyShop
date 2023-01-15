@@ -24,9 +24,18 @@ type ReviewFormSchema = yup.InferType<typeof reviewSchema>;
 export const ProductReviewForm = ({ productSlug }: ProductReviewProps) => {
   const {
     register,
+    reset,
     handleSubmit,
+
     formState: { errors },
   } = useForm<ReviewFormSchema>({
+    defaultValues: {
+      name: "",
+      email: "",
+      headline: "",
+      content: "",
+      rating: 0,
+    },
     resolver: yupResolver(reviewSchema),
   });
 
@@ -53,6 +62,7 @@ export const ProductReviewForm = ({ productSlug }: ProductReviewProps) => {
         },
       },
     });
+    reset();
   });
 
   return (

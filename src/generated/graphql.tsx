@@ -11092,7 +11092,7 @@ export type GetCategorySlugQueryHookResult = ReturnType<typeof useGetCategorySlu
 export type GetCategorySlugLazyQueryHookResult = ReturnType<typeof useGetCategorySlugLazyQuery>;
 export type GetCategorySlugQueryResult = Apollo.QueryResult<GetCategorySlugQuery, GetCategorySlugQueryVariables>;
 export const GetReviewsForProductsSlugDocument = gql`
-    query GetReviewsForProductsSlug($slug: String = "mug") {
+    query GetReviewsForProductsSlug($slug: String) {
   product(where: {slug: $slug}) {
     reviews {
       ...reviewContent
