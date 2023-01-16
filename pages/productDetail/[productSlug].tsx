@@ -78,6 +78,7 @@ export const getStaticProps = async ({
         longDescription: await serialize(data.product.description),
       },
     },
+    fallback: true,
   };
 };
 
