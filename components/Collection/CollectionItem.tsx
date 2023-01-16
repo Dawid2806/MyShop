@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { itemsProps } from "../../typs";
 import { Item } from "./Collection";
 
 export interface collectionItemProps {

@@ -15,18 +15,18 @@ import {
 const ProductsDetailsPage = ({
   data,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  if (!data) {
+  if (!data?.product) {
     return;
   }
   return (
     <ProductDetails
       ProductProps={{
-        id: data.product?.id,
-        name: data.product?.name,
-        price: data.product?.price,
-        image: data.product?.images[0].url,
+        id: data.product.id,
+        name: data.product.name,
+        price: data.product.price,
+        image: data.product.images[0].url,
         description: data.longDescription,
-        slug: data.product?.slug,
+        slug: data.product.slug,
       }}
     />
   );
@@ -45,7 +45,7 @@ export const getStaticPaths = async () => {
         },
       };
     }),
-    fallback: "blocking",
+    fallback: true,
   };
 };
 
@@ -66,12 +66,17 @@ export const getStaticProps = async ({
     },
     query: GetProductDebailsBySlugDocument,
   });
-
+  if (!data || !data.product) {
+    return {
+      props: {},
+      notFound: true,
+    };
+  }
   return {
     props: {
       data: {
         ...data,
-        longDescription: await serialize(data.product?.description),
+        longDescription: await serialize(data.product.description),
       },
     },
   };

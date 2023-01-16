@@ -10764,7 +10764,7 @@ export type CreateProductReviewMutationVariables = Exact<{
 }>;
 
 
-export type CreateProductReviewMutation = { __typename?: 'Mutation', review?: { __typename?: 'Review', id: string } | null };
+export type CreateProductReviewMutation = { __typename?: 'Mutation', review?: { __typename?: 'Review', headline: string, content: string, name: string, id: string, rating?: number | null } | null };
 
 export type GetCategoryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -10786,7 +10786,7 @@ export type GetProductDebailsBySlugQueryVariables = Exact<{
 }>;
 
 
-export type GetProductDebailsBySlugQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string, price: number, slug: string, description: any, images: Array<{ __typename?: 'Asset', url: string, stage: Stage }> } | null };
+export type GetProductDebailsBySlugQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string, price: number, slug: string, description: string, images: Array<{ __typename?: 'Asset', url: string, stage: Stage }> } | null };
 
 export type GetAllProductsInCurrenCategoryQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
@@ -10821,10 +10821,10 @@ export const ReviewContentFragmentDoc = gql`
 export const CreateProductReviewDocument = gql`
     mutation CreateProductReview($review: ReviewCreateInput!) {
   review: createReview(data: $review) {
-    id
+    ...reviewContent
   }
 }
-    `;
+    ${ReviewContentFragmentDoc}`;
 export type CreateProductReviewMutationFn = Apollo.MutationFunction<CreateProductReviewMutation, CreateProductReviewMutationVariables>;
 
 /**
@@ -11092,7 +11092,7 @@ export type GetCategorySlugQueryHookResult = ReturnType<typeof useGetCategorySlu
 export type GetCategorySlugLazyQueryHookResult = ReturnType<typeof useGetCategorySlugLazyQuery>;
 export type GetCategorySlugQueryResult = Apollo.QueryResult<GetCategorySlugQuery, GetCategorySlugQueryVariables>;
 export const GetReviewsForProductsSlugDocument = gql`
-    query GetReviewsForProductsSlug($slug: String = "mug") {
+    query GetReviewsForProductsSlug($slug: String) {
   product(where: {slug: $slug}) {
     reviews {
       ...reviewContent
