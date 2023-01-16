@@ -45,6 +45,7 @@ export const getStaticPaths = async () => {
         },
       };
     }),
+    fallback: true,
   };
 };
 
@@ -78,7 +79,6 @@ export const getStaticProps = async ({
         longDescription: await serialize(data.product.description),
       },
     },
-    fallback: true,
   };
 };
 
