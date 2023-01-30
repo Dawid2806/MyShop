@@ -58,7 +58,7 @@ export const ProductReviewForm = ({ productSlug }: ProductReviewProps) => {
         review: {
           __typename: "Review",
           ...data,
-          id: Math.random().toString(32),
+          id: (-Math.random()).toString(32),
         },
       },
     });
